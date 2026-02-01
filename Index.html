@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Isha ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /* Romantic background image */
+            background: linear-gradient(rgba(255, 240, 243, 0.8), rgba(255, 240, 243, 0.8)), 
+                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            z-index: 10;
+            border: 2px solid #ffb3c1;
+        }
+
+        .cat-icon { font-size: 80px; margin-bottom: 10px; }
+        h1 { color: #d63384; font-size: 26px; }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            min-height: 100px;
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        #noBtn {
+            background-color: #808080;
+            color: white;
+            position: absolute;
+            transition: all 0.15s ease-out;
+            z-index: 100;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <audio id="romanticSong">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+    <div class="card" id="mainCard">
+        <div class="cat-icon">🐱</div>
+        <h1>Isha, will you be my valentine?</h1>
+        
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="successCard">
+        <div class="cat-icon">💖</div>
+        <h1>Yay! See you soon, Isha!</h1>
+        <p><i>"I found a love for me..."</i> 🎶</p>
+        <p>Best decision ever. 😘</p>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const mainCard = document.getElementById('mainCard');
+        const successCard = document.getElementById('successCard');
+        const song = document.getElementById('romanticSong');
+
+        const moveButton = () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        };
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
+
+        yesBtn.addEventListener('click', () => {
+            mainCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+            
+            // Play Music
+            song.play();
+
+            // Confetti Blast
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#ff4d6d', '#ffb3c1', '#ffffff']
+            });
+        });
+    </script>
+</body>
+</html>
