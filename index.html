@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Isha ❤️</title> <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <title>For My Isha ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body {
             display: flex;
@@ -11,11 +12,21 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(rgba(255, 240, 243, 0.7), rgba(255, 240, 243, 0.7)), 
-                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            /* --- NEW BACKGROUND CSS --- */
+            background: 
+                /* Layer 1: Added soft red hearts */
+                radial-gradient(circle at 20% 35%, rgba(255, 40, 40, 0.5) 0%, transparent 12%),
+                radial-gradient(circle at 75% 65%, rgba(255, 40, 40, 0.5) 0%, transparent 15%),
+                radial-gradient(circle at 50% 85%, rgba(255, 40, 40, 0.5) 0%, transparent 10%),
+                /* Layer 2: Made the pink overlay stronger (0.7 -> 0.8) for "10% more pink" */
+                linear-gradient(rgba(255, 240, 243, 0.8), rgba(255, 240, 243, 0.8)), 
+                /* Layer 3: The original background image */
+                url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            /* --------------------------- */
         }
 
         .card {
@@ -30,7 +41,6 @@
             border: 2px solid #ffb3c1;
         }
 
-        /* Tripled bunny size as requested */
         .bunny-icon { 
             font-size: 120px; 
             margin-bottom: 20px;
@@ -109,7 +119,7 @@
 
     <div class="card hidden" id="successCard">
         <div class="bunny-icon">🐰</div>
-        <h1> I love you baby 🌹💖</h1>
+        <h1>I love you baby 🌹💖</h1>
         <p><i>"I found a love for me..."</i> 🎶</p>
         <img src="us.jpg" id="couplePhoto" alt="Us ❤️">
     </div>
